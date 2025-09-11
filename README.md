@@ -14,6 +14,11 @@ Build a Rails API endpoint that fetches property valuation and rental data from 
 - Body: `{"crm_id": "ABC-123"}`
 - Optional: `?refresh=true` query parameter
 
+**Your endpoint should be available at:**
+```
+POST http://localhost:3000/api/v1/market_data
+```
+
 ### Flow
 
 1. Look up property by `crm_id` (Property model already exists)
@@ -57,6 +62,45 @@ Build a Rails API endpoint that fetches property valuation and rental data from 
 - `GET /avm/value?address=123 Main St&city=Austin&state=TX&zipCode=78701`
 - `GET /avm/rent/long-term?address=123 Main St&city=Austin&state=TX&zipCode=78701`
 
+### Example RentCast API Responses
+
+**Value Endpoint Response:**
+```json
+{
+  "avm": {
+    "amount": 423700,
+    "low": 380430,
+    "high": 467070,
+    "currency": "USD"
+  },
+  "propertyDetails": {
+    "address": "1600 Barton Springs Rd, Austin, TX 78704",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "squareFootage": 1200
+  }
+}
+```
+
+**Rent Endpoint Response:**
+```json
+{
+  "rent": {
+    "amount": 2150,
+    "low": 1935,
+    "high": 2365,
+    "period": "month",
+    "currency": "USD"
+  },
+  "propertyDetails": {
+    "address": "1600 Barton Springs Rd, Austin, TX 78704",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "squareFootage": 1200
+  }
+}
+```
+
 ## Setup
 
 1. **Install dependencies:**
@@ -87,6 +131,8 @@ RENTCAST_API_KEY=25dfb8c5700b42cebdc726df295c35ab
 
 5. **Test with existing property:**
 
+**Example property address:** `1600 Barton Springs Rd, Austin, TX 78704` (CRM ID: `ABC-123`)
+
 ```bash
 curl -X POST http://localhost:3000/api/v1/market_data \
   -H "Content-Type: application/json" \
@@ -106,7 +152,7 @@ curl -X POST http://localhost:3000/api/v1/market_data \
 
 3. **Controller**: Handle the POST request with caching logic
 
-4. **Service**: RentCast API client using Faraday
+4. **Service**: RentCast API client using HTTParty
 
 5. **Model**: MarketData with validations
 
@@ -122,7 +168,7 @@ curl -X POST http://localhost:3000/api/v1/market_data \
 
 - ✅ Rails app with API configuration
 - ✅ Property model with sample data (`ABC-123`, `DEF-456`)
-- ✅ Faraday gem for HTTP requests
+- ✅ HTTParty gem for HTTP requests
 - ✅ Environment variable for `RENTCAST_API_KEY`
 
 ## Notes
