@@ -4,15 +4,15 @@
 
 # Sample properties for testing the market data API
 Property.find_or_create_by!(crm_id: "ABC-123") do |property|
-  property.address_line1 = "123 Main St"
+  property.address_line1 = "1600 Barton Springs Rd"
   property.city = "Austin"
   property.state = "TX"
-  property.zip = "78701"
+  property.zip = "78704"
 end
 
 Property.find_or_create_by!(crm_id: "DEF-456") do |property|
-  property.address_line1 = "456 Oak Ave"
+  property.address_line1 = "2100 S Lamar Blvd"
   property.city = "Austin"
   property.state = "TX" 
-  property.zip = "78702"
+  property.zip = "78704"
 end

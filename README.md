@@ -98,8 +98,8 @@ curl -X POST http://localhost:3000/api/v1/market_data \
 1. **Migration**: Create `market_data` table
 
    - `crm_id` (string, unique index)
-   - `value_payload` (jsonb)
-   - `rent_payload` (jsonb)
+   - `value_payload` (text) - stores JSON as text (SQLite compatible)
+   - `rent_payload` (text) - stores JSON as text (SQLite compatible)
    - `fetched_at` (datetime)
 
 2. **Routes**: Add API namespace and endpoint
