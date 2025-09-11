@@ -78,7 +78,14 @@ rails db:seed
 rails server
 ```
 
-4. **Test with existing property:**
+4. **Set up environment variable:**
+
+Create `.env` file in project root:
+```
+RENTCAST_API_KEY=25dfb8c5700b42cebdc726df295c35ab
+```
+
+5. **Test with existing property:**
 
 ```bash
 curl -X POST http://localhost:3000/api/v1/market_data \
