@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_11_140228) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_11_153510) do
+  create_table "market_data", force: :cascade do |t|
+    t.string "crm_id"
+    t.text "value_payload"
+    t.text "rent_payload"
+    t.datetime "fetched_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crm_id"], name: "index_market_data_on_crm_id", unique: true
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "crm_id"
     t.string "address_line1"
