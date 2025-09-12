@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # Market data endpoint - to be implemented by candidate
-      # post 'market_data', to: 'market_data#create'
+      post 'market_data', to: 'market_data#create'
     end
   end
 
